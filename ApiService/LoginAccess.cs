@@ -19,5 +19,4 @@ namespace ApiService
         public static int KodeSemester;
         public static int IdTahun;
     }
-
 }

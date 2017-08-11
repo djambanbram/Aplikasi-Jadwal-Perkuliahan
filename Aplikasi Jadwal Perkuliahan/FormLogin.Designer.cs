@@ -64,6 +64,7 @@ namespace Aplikasi_Jadwal_Perkuliahan
             this.txtUsername.Size = new System.Drawing.Size(223, 25);
             this.txtUsername.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtUsername.TabIndex = 1;
+            this.txtUsername.Text = "bangkit@amikom.ac.id";
             // 
             // btnClose
             // 
@@ -83,9 +84,11 @@ namespace Aplikasi_Jadwal_Perkuliahan
             this.txtPassword.Location = new System.Drawing.Point(105, 43);
             this.txtPassword.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(223, 25);
             this.txtPassword.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.txtPassword.TabIndex = 4;
+            this.txtPassword.Text = "OpK3u@ngan";
             // 
             // autoLabel2
             // 

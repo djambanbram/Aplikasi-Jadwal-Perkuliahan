@@ -37,8 +37,8 @@ namespace Aplikasi_Jadwal_Perkuliahan.UIMaster
         {
             this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnTutup = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,13 +53,6 @@ namespace Aplikasi_Jadwal_Perkuliahan.UIMaster
             this.flowLayoutPanel1.Size = new System.Drawing.Size(816, 36);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(374, 3);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(326, 26);
-            this.progressBar1.TabIndex = 0;
-            // 
             // btnTutup
             // 
             this.btnTutup.BeforeTouchSize = new System.Drawing.Size(107, 28);
@@ -70,6 +63,13 @@ namespace Aplikasi_Jadwal_Perkuliahan.UIMaster
             this.btnTutup.TabIndex = 1;
             this.btnTutup.Text = "Tutup";
             this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(374, 3);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(326, 26);
+            this.progressBar1.TabIndex = 0;
             // 
             // FormUIMaster
             // 
@@ -89,7 +89,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UIMaster
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private Syncfusion.Windows.Forms.ButtonAdv btnTutup;
+        protected System.Windows.Forms.ProgressBar progressBar1;
     }
 }

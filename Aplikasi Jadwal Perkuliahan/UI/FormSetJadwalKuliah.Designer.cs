@@ -35,7 +35,6 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -117,14 +116,6 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.JenisKuliah,
             this.SksT,
             this.SksP});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvKuliahBelumTerjadwal.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvKuliahBelumTerjadwal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvKuliahBelumTerjadwal.Location = new System.Drawing.Point(3, 54);
             this.dgvKuliahBelumTerjadwal.MultiSelect = false;
@@ -233,7 +224,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.Dosen.HeaderText = "Dosen";
             this.Dosen.Name = "Dosen";
             this.Dosen.ReadOnly = true;
-            this.Dosen.Width = 150;
+            this.Dosen.Width = 230;
             // 
             // JenisKuliah
             // 
@@ -268,6 +259,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.Controls.Add(this.splitContainer1);
             this.Name = "FormSetJadwalKuliah";
             this.Text = "Set Jadwal Perkuliahan";
+            this.Load += new System.EventHandler(this.FormSetJadwalKuliah_Load);
             this.Controls.SetChildIndex(this.splitContainer1, 0);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
