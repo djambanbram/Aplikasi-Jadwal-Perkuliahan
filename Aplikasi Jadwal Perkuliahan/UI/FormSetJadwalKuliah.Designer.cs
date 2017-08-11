@@ -35,6 +35,10 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvKuliahBelumTerjadwal = new System.Windows.Forms.DataGridView();
@@ -42,6 +46,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.txtCari = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.treeGridView1 = new AdvancedDataGridView.TreeGridView();
             this.IdKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +64,8 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             ((System.ComponentModel.ISupportInitialize)(this.dgvKuliahBelumTerjadwal)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCari)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.treeGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -110,6 +117,14 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.JenisKuliah,
             this.SksT,
             this.SksP});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvKuliahBelumTerjadwal.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvKuliahBelumTerjadwal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvKuliahBelumTerjadwal.Location = new System.Drawing.Point(3, 54);
             this.dgvKuliahBelumTerjadwal.MultiSelect = false;
@@ -154,6 +169,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.treeGridView1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
@@ -161,6 +177,19 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kuliah sudah terjadwal";
+            // 
+            // treeGridView1
+            // 
+            this.treeGridView1.AllowUserToAddRows = false;
+            this.treeGridView1.AllowUserToDeleteRows = false;
+            this.treeGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.treeGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.treeGridView1.ImageList = null;
+            this.treeGridView1.Location = new System.Drawing.Point(3, 21);
+            this.treeGridView1.Name = "treeGridView1";
+            this.treeGridView1.Size = new System.Drawing.Size(810, 197);
+            this.treeGridView1.TabIndex = 0;
             // 
             // IdKuliah
             // 
@@ -172,6 +201,8 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             // No
             // 
             this.No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.No.DefaultCellStyle = dataGridViewCellStyle1;
             this.No.HeaderText = "No";
             this.No.Name = "No";
             this.No.ReadOnly = true;
@@ -213,6 +244,8 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             // 
             // SksT
             // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SksT.DefaultCellStyle = dataGridViewCellStyle2;
             this.SksT.HeaderText = "Sks T";
             this.SksT.Name = "SksT";
             this.SksT.ReadOnly = true;
@@ -220,6 +253,8 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             // 
             // SksP
             // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SksP.DefaultCellStyle = dataGridViewCellStyle3;
             this.SksP.HeaderText = "Sks P";
             this.SksP.Name = "SksP";
             this.SksP.ReadOnly = true;
@@ -243,6 +278,8 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCari)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.treeGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -256,6 +293,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtCari;
         private System.Windows.Forms.DataGridView dgvKuliahBelumTerjadwal;
+        private AdvancedDataGridView.TreeGridView treeGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdKuliah;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
