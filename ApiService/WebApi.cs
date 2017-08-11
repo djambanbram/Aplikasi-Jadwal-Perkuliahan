@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.Configuration;
 
 namespace ApiService
 {
@@ -23,6 +24,8 @@ namespace ApiService
         //        return message;
         //    }
         //}
+
+        public static string BaseAddress = ConfigurationManager.AppSettings["baseAddress"];
 
         public async Task<HttpResponseMessage> Post(string path, List<KeyValuePair<string, string>> listValue)
         {

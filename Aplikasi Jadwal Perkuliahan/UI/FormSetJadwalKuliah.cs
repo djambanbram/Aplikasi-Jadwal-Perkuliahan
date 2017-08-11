@@ -5,6 +5,7 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
+using ApiService;
 using Aplikasi_Jadwal_Perkuliahan.UIMaster;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
 {
     public partial class FormSetJadwalKuliah : FormUIMaster
     {
+        public string URLGetKuliahBelumTerjadwal = WebApi.BaseAddress + "/akademik_api/api/info_krs/";
         public FormSetJadwalKuliah()
         {
             InitializeComponent();
