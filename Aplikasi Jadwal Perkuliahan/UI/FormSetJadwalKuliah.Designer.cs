@@ -36,16 +36,19 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvKuliahBelumTerjadwal = new System.Windows.Forms.DataGridView();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.txtCari = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.treeGridView1 = new AdvancedDataGridView.TreeGridView();
             this.IdKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +58,23 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.JenisKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SksT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SksP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SesiEstimasi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SesiTerjadwal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.txtCari = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgvKuliahTerjadwal = new AdvancedDataGridView.TreeGridView();
+            this.tree = new AdvancedDataGridView.TreeGridColumn();
+            this.Hari = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Jam1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Jam2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Jam3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Jam4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Jam5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -63,8 +83,9 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             ((System.ComponentModel.ISupportInitialize)(this.dgvKuliahBelumTerjadwal)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCari)).BeginInit();
+            this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.treeGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKuliahTerjadwal)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -81,7 +102,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(816, 427);
+            this.splitContainer1.Size = new System.Drawing.Size(935, 427);
             this.splitContainer1.SplitterDistance = 202;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -92,7 +113,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(816, 202);
+            this.groupBox1.Size = new System.Drawing.Size(935, 202);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Kuliah belum terjadwal";
@@ -104,7 +125,16 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.dgvKuliahBelumTerjadwal.AllowUserToDeleteRows = false;
             this.dgvKuliahBelumTerjadwal.AllowUserToResizeColumns = false;
             this.dgvKuliahBelumTerjadwal.AllowUserToResizeRows = false;
+            this.dgvKuliahBelumTerjadwal.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvKuliahBelumTerjadwal.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvKuliahBelumTerjadwal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvKuliahBelumTerjadwal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKuliahBelumTerjadwal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdKuliah,
@@ -115,25 +145,121 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.Dosen,
             this.JenisKuliah,
             this.SksT,
-            this.SksP});
+            this.SksP,
+            this.SesiEstimasi,
+            this.SesiTerjadwal});
             this.dgvKuliahBelumTerjadwal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvKuliahBelumTerjadwal.Location = new System.Drawing.Point(3, 54);
             this.dgvKuliahBelumTerjadwal.MultiSelect = false;
             this.dgvKuliahBelumTerjadwal.Name = "dgvKuliahBelumTerjadwal";
             this.dgvKuliahBelumTerjadwal.ReadOnly = true;
             this.dgvKuliahBelumTerjadwal.RowHeadersVisible = false;
+            this.dgvKuliahBelumTerjadwal.RowHeadersWidth = 30;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvKuliahBelumTerjadwal.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvKuliahBelumTerjadwal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKuliahBelumTerjadwal.Size = new System.Drawing.Size(810, 145);
+            this.dgvKuliahBelumTerjadwal.Size = new System.Drawing.Size(929, 145);
             this.dgvKuliahBelumTerjadwal.TabIndex = 1;
+            // 
+            // IdKuliah
+            // 
+            this.IdKuliah.HeaderText = "IdKuliah";
+            this.IdKuliah.Name = "IdKuliah";
+            this.IdKuliah.ReadOnly = true;
+            this.IdKuliah.Visible = false;
+            // 
+            // No
+            // 
+            this.No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.No.DefaultCellStyle = dataGridViewCellStyle2;
+            this.No.HeaderText = "No";
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            this.No.Width = 51;
+            // 
+            // Kode
+            // 
+            this.Kode.HeaderText = "Kode";
+            this.Kode.Name = "Kode";
+            this.Kode.ReadOnly = true;
+            this.Kode.Width = 50;
+            // 
+            // MataKuliah
+            // 
+            this.MataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MataKuliah.HeaderText = "Mata Kuliah";
+            this.MataKuliah.Name = "MataKuliah";
+            this.MataKuliah.ReadOnly = true;
+            // 
+            // Kelas
+            // 
+            this.Kelas.HeaderText = "Kelas";
+            this.Kelas.Name = "Kelas";
+            this.Kelas.ReadOnly = true;
+            this.Kelas.Width = 160;
+            // 
+            // Dosen
+            // 
+            this.Dosen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Dosen.HeaderText = "Dosen";
+            this.Dosen.Name = "Dosen";
+            this.Dosen.ReadOnly = true;
+            // 
+            // JenisKuliah
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.JenisKuliah.DefaultCellStyle = dataGridViewCellStyle3;
+            this.JenisKuliah.HeaderText = "Jenis Kuliah";
+            this.JenisKuliah.Name = "JenisKuliah";
+            this.JenisKuliah.ReadOnly = true;
+            this.JenisKuliah.Width = 50;
+            // 
+            // SksT
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SksT.DefaultCellStyle = dataGridViewCellStyle4;
+            this.SksT.HeaderText = "Sks T";
+            this.SksT.Name = "SksT";
+            this.SksT.ReadOnly = true;
+            this.SksT.Width = 40;
+            // 
+            // SksP
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SksP.DefaultCellStyle = dataGridViewCellStyle5;
+            this.SksP.HeaderText = "Sks P";
+            this.SksP.Name = "SksP";
+            this.SksP.ReadOnly = true;
+            this.SksP.Width = 40;
+            // 
+            // SesiEstimasi
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SesiEstimasi.DefaultCellStyle = dataGridViewCellStyle6;
+            this.SesiEstimasi.HeaderText = "Sesi Estimasi";
+            this.SesiEstimasi.Name = "SesiEstimasi";
+            this.SesiEstimasi.ReadOnly = true;
+            this.SesiEstimasi.Width = 60;
+            // 
+            // SesiTerjadwal
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SesiTerjadwal.DefaultCellStyle = dataGridViewCellStyle7;
+            this.SesiTerjadwal.HeaderText = "Sesi Terjadwal";
+            this.SesiTerjadwal.Name = "SesiTerjadwal";
+            this.SesiTerjadwal.ReadOnly = true;
+            this.SesiTerjadwal.Width = 70;
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.autoLabel1);
             this.flowLayoutPanel2.Controls.Add(this.txtCari);
+            this.flowLayoutPanel2.Controls.Add(this.panel1);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 21);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(810, 33);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(929, 33);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // autoLabel1
@@ -158,104 +284,138 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.txtCari.TabIndex = 1;
             this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.autoLabel3);
+            this.panel1.Controls.Add(this.autoLabel2);
+            this.panel1.Location = new System.Drawing.Point(345, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(570, 25);
+            this.panel1.TabIndex = 2;
+            // 
+            // autoLabel3
+            // 
+            this.autoLabel3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel3.ForeColor = System.Drawing.Color.Red;
+            this.autoLabel3.Location = new System.Drawing.Point(0, 12);
+            this.autoLabel3.Name = "autoLabel3";
+            this.autoLabel3.Size = new System.Drawing.Size(370, 13);
+            this.autoLabel3.TabIndex = 1;
+            this.autoLabel3.Text = "*Sesi Terjadwal: Jumlah pertemuan per minggu yang telah dijadwalkan";
+            // 
+            // autoLabel2
+            // 
+            this.autoLabel2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoLabel2.ForeColor = System.Drawing.Color.Red;
+            this.autoLabel2.Location = new System.Drawing.Point(0, -2);
+            this.autoLabel2.Name = "autoLabel2";
+            this.autoLabel2.Size = new System.Drawing.Size(553, 13);
+            this.autoLabel2.TabIndex = 0;
+            this.autoLabel2.Text = "*Sesi Estimasi: Estimasi pertemuan per minggu berdasarkan jumlah SKS (lebih dari " +
+    "3 SKS 2 sesi per minggu)";
+            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.treeGridView1);
+            this.groupBox2.Controls.Add(this.dgvKuliahTerjadwal);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(816, 221);
+            this.groupBox2.Size = new System.Drawing.Size(935, 221);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kuliah sudah terjadwal";
             // 
-            // treeGridView1
+            // dgvKuliahTerjadwal
             // 
-            this.treeGridView1.AllowUserToAddRows = false;
-            this.treeGridView1.AllowUserToDeleteRows = false;
-            this.treeGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.treeGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.treeGridView1.ImageList = null;
-            this.treeGridView1.Location = new System.Drawing.Point(3, 21);
-            this.treeGridView1.Name = "treeGridView1";
-            this.treeGridView1.Size = new System.Drawing.Size(810, 197);
-            this.treeGridView1.TabIndex = 0;
+            this.dgvKuliahTerjadwal.AllowDrop = true;
+            this.dgvKuliahTerjadwal.AllowUserToAddRows = false;
+            this.dgvKuliahTerjadwal.AllowUserToDeleteRows = false;
+            this.dgvKuliahTerjadwal.AllowUserToResizeRows = false;
+            this.dgvKuliahTerjadwal.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvKuliahTerjadwal.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvKuliahTerjadwal.ColumnHeadersHeight = 27;
+            this.dgvKuliahTerjadwal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvKuliahTerjadwal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tree,
+            this.Hari,
+            this.Jam1,
+            this.Jam2,
+            this.Jam3,
+            this.Jam4,
+            this.Jam5});
+            this.dgvKuliahTerjadwal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvKuliahTerjadwal.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvKuliahTerjadwal.ImageList = null;
+            this.dgvKuliahTerjadwal.Location = new System.Drawing.Point(3, 21);
+            this.dgvKuliahTerjadwal.MultiSelect = false;
+            this.dgvKuliahTerjadwal.Name = "dgvKuliahTerjadwal";
+            this.dgvKuliahTerjadwal.RowHeadersVisible = false;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvKuliahTerjadwal.RowsDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvKuliahTerjadwal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvKuliahTerjadwal.Size = new System.Drawing.Size(929, 197);
+            this.dgvKuliahTerjadwal.TabIndex = 0;
             // 
-            // IdKuliah
+            // tree
             // 
-            this.IdKuliah.HeaderText = "IdKuliah";
-            this.IdKuliah.Name = "IdKuliah";
-            this.IdKuliah.ReadOnly = true;
-            this.IdKuliah.Visible = false;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightGray;
+            this.tree.DefaultCellStyle = dataGridViewCellStyle9;
+            this.tree.DefaultNodeImage = null;
+            this.tree.HeaderText = "";
+            this.tree.Name = "tree";
+            this.tree.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.tree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.tree.Width = 40;
             // 
-            // No
+            // Hari
             // 
-            this.No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.No.DefaultCellStyle = dataGridViewCellStyle1;
-            this.No.HeaderText = "No";
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            this.No.Width = 51;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.LightGray;
+            this.Hari.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Hari.HeaderText = "Hari";
+            this.Hari.Name = "Hari";
+            this.Hari.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Hari.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // Kode
+            // Jam1
             // 
-            this.Kode.HeaderText = "Kode";
-            this.Kode.Name = "Kode";
-            this.Kode.ReadOnly = true;
-            this.Kode.Width = 60;
+            this.Jam1.HeaderText = "Jam Ke-1";
+            this.Jam1.Name = "Jam1";
+            this.Jam1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Jam1.Width = 350;
             // 
-            // MataKuliah
+            // Jam2
             // 
-            this.MataKuliah.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.MataKuliah.HeaderText = "Mata Kuliah";
-            this.MataKuliah.Name = "MataKuliah";
-            this.MataKuliah.ReadOnly = true;
+            this.Jam2.HeaderText = "Jam Ke-2";
+            this.Jam2.Name = "Jam2";
+            this.Jam2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Jam2.Width = 350;
             // 
-            // Kelas
+            // Jam3
             // 
-            this.Kelas.HeaderText = "Kelas";
-            this.Kelas.Name = "Kelas";
-            this.Kelas.ReadOnly = true;
+            this.Jam3.HeaderText = "jam Ke-3";
+            this.Jam3.Name = "Jam3";
+            this.Jam3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Jam3.Width = 350;
             // 
-            // Dosen
+            // Jam4
             // 
-            this.Dosen.HeaderText = "Dosen";
-            this.Dosen.Name = "Dosen";
-            this.Dosen.ReadOnly = true;
-            this.Dosen.Width = 230;
+            this.Jam4.HeaderText = "Jam Ke-4";
+            this.Jam4.Name = "Jam4";
+            this.Jam4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Jam4.Width = 350;
             // 
-            // JenisKuliah
+            // Jam5
             // 
-            this.JenisKuliah.HeaderText = "Jenis Kuliah";
-            this.JenisKuliah.Name = "JenisKuliah";
-            this.JenisKuliah.ReadOnly = true;
-            this.JenisKuliah.Width = 50;
-            // 
-            // SksT
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SksT.DefaultCellStyle = dataGridViewCellStyle2;
-            this.SksT.HeaderText = "Sks T";
-            this.SksT.Name = "SksT";
-            this.SksT.ReadOnly = true;
-            this.SksT.Width = 50;
-            // 
-            // SksP
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SksP.DefaultCellStyle = dataGridViewCellStyle3;
-            this.SksP.HeaderText = "Sks P";
-            this.SksP.Name = "SksP";
-            this.SksP.ReadOnly = true;
-            this.SksP.Width = 50;
+            this.Jam5.HeaderText = "Jam Ke-5";
+            this.Jam5.Name = "Jam5";
+            this.Jam5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Jam5.Width = 350;
             // 
             // FormSetJadwalKuliah
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 463);
+            this.ClientSize = new System.Drawing.Size(935, 463);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FormSetJadwalKuliah";
             this.Text = "Set Jadwal Perkuliahan";
@@ -270,8 +430,10 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCari)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.treeGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKuliahTerjadwal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -285,7 +447,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtCari;
         private System.Windows.Forms.DataGridView dgvKuliahBelumTerjadwal;
-        private AdvancedDataGridView.TreeGridView treeGridView1;
+        private AdvancedDataGridView.TreeGridView dgvKuliahTerjadwal;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdKuliah;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
@@ -295,5 +457,17 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
         private System.Windows.Forms.DataGridViewTextBoxColumn JenisKuliah;
         private System.Windows.Forms.DataGridViewTextBoxColumn SksT;
         private System.Windows.Forms.DataGridViewTextBoxColumn SksP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SesiEstimasi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SesiTerjadwal;
+        private System.Windows.Forms.Panel panel1;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
+        private AdvancedDataGridView.TreeGridColumn tree;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Hari;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Jam1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Jam2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Jam3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Jam4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Jam5;
     }
 }

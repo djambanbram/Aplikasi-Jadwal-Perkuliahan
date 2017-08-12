@@ -79,4 +79,19 @@ namespace Aplikasi_Jadwal_Perkuliahan.Model
         public string Ruang { get; set; }
         public string Keterangan { get; set; }
     }
+
+    public class Ruangan
+    {
+        public string Ruang { get; set; }
+        public bool IsDipakaiTeori { get; set; }
+        public bool IsDipakaiPraktikum { get; set; }
+    }
+
+    public class JamKuliah
+    {
+        public int IdJam { get; set; }
+        public string JamMulai { get; set; }
+        public string JamSelesai { get; set; }
+        public bool IsDipakaiSabtu { get; set; }
+    }
 }
