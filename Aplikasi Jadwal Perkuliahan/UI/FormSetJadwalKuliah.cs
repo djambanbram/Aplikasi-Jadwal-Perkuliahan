@@ -42,11 +42,19 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
         private List<JamKuliah> listJamNonSabtu;
         private List<JamKuliah> listJamsabtu;
 
+        private DragandDrop dragAndDropAdd;
+        private DragandDrop dragAndDropDelete;
+
+        private dynamic ValueAdd;
+        private dynamic ValueDelete;
+
         public FormSetJadwalKuliah()
         {
             InitializeComponent();
             webApi = new WebApi();
             commLib = new CommonLib();
+            dragAndDropAdd = new DragandDrop();
+            dragAndDropDelete = new DragandDrop();
         }
 
         private void Loading(bool isLoading)
@@ -138,7 +146,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
                             string.Format("{0} - {1}", listJamNonSabtu[3].JamMulai, listJamNonSabtu[3].JamSelesai),
                             string.Format("{0} - {1}", listJamNonSabtu[4].JamMulai, listJamNonSabtu[4].JamSelesai));
                     }
-                    
+
                     if (commLib.GetJenisKuliah()[jenisKuliah] == "T")
                     {
                         tgn2 = dgvKuliahTerjadwal.Nodes[Nodes1].Nodes[0];
@@ -164,6 +172,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
                 }
                 Nodes1++;
             }
+            await LoadKuliahTerjadwal(jsonData);
         }
 
         private void txtCari_TextChanged(object sender, EventArgs e)
@@ -216,6 +225,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
                     jadwal.Kuliah.Kode,
                     jadwal.Kuliah.MataKuliah,
                     jadwal.Kelas.NamaKelas,
+                    jadwal.Dosen.Nik,
                     jadwal.Dosen.NamaDosen,
                     jadwal.Kuliah.JenisMk,
                     jadwal.Kuliah.SksTeori,
@@ -236,7 +246,132 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             }
 
             listKuliahTerjadwal = JsonConvert.DeserializeObject<List<JadwalPerkuliahan>>(response.Content.ReadAsStringAsync().Result);
-            MessageBox.Show(listKuliahTerjadwal.Count.ToString());
+            listKuliahTerjadwal = listKuliahTerjadwal.OrderBy(j => j.Hari.Idhari).ToList();
+
+            foreach (DataGridViewRow dgRow in dgvKuliahTerjadwal.Rows)
+            {
+                foreach (DataGridViewColumn dgColumn in dgvKuliahTerjadwal.Columns)
+                {
+                    if (dgColumn.Name == "tree" || dgColumn.Name == "Hari")
+                    {
+                        continue;
+                    }
+                    if (dgRow.DefaultCellStyle.BackColor == Color.LightGray)
+                    {
+                        continue;
+                    }
+
+                    var ruang = dgRow.Cells["Hari"].Value.ToString();
+                    var jam = int.Parse(dgColumn.Name.Replace("Jam", "").ToString());
+                    var hari = dgvKuliahTerjadwal.GetNodeForRow(dgRow).Parent.Parent.Cells["Hari"].Value.ToString();
+                    JadwalPerkuliahan jp = listKuliahTerjadwal.Where(p => p.Ruang == ruang && p.Jam.IdJam == jam && p.Hari.NamaHari == hari).FirstOrDefault();
+                    if (jp != null)
+                    {
+                        dgRow.Cells[dgColumn.Name].Value = string.Format("{0} ({1}) {2}", jp.Kuliah.MataKuliah, jp.Dosen.NamaDosen, jp.Kelas.NamaKelas);
+                        dgRow.Cells[dgColumn.Name].Tag = jp.IdKuliah.ToString();
+                    }
+                }
+            }
+
+            foreach (TreeGridNode tgn in dgvKuliahTerjadwal.Nodes)
+            {
+                tgn.Collapse();
+            }
+        }
+
+        private void dgvKuliahTerjadwal_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void dgvKuliahTerjadwal_MouseDown(object sender, MouseEventArgs e)
+        {
+            var hittest = dragAndDropDelete.DragMouseDownFirst(e, dgvKuliahTerjadwal);
+            if (hittest == null)
+            {
+                return;
+            }
+
+            var tgnRuang = dgvKuliahTerjadwal.GetNodeForRow(hittest.RowIndex);
+            var tgnHari = dgvKuliahTerjadwal.GetNodeForRow(hittest.RowIndex).Parent.Parent;
+
+
+        }
+
+        private void dgvKuliahTerjadwal_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvKuliahTerjadwal_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvKuliahTerjadwal_DragDrop(object sender, DragEventArgs e)
+        {
+            var hittest = dragAndDropAdd.DragDrop(e, dgvKuliahTerjadwal);
+            if (hittest == null)
+            {
+                return;
+            }
+
+            if (hittest.ColumnIndex <= 1)
+            {
+                return;
+            }
+
+            var tgnRuang = dgvKuliahTerjadwal.GetNodeForRow(hittest.RowIndex);
+            var tgnHari = dgvKuliahTerjadwal.GetNodeForRow(hittest.RowIndex).Parent.Parent;
+
+            var Nik = ValueAdd.Nik;
+            var NamaDosen = ValueAdd.NamaDosen;
+            var MataKuliah = ValueAdd.MataKuliah;
+            var Kelas = ValueAdd.Kelas;
+
+            dgvKuliahTerjadwal.Rows[hittest.RowIndex].Cells[hittest.ColumnIndex].Value = string.Format("{0} ({1}) {2}", MataKuliah, NamaDosen, Kelas);
+        }
+
+        private void dgvKuliahBelumTerjadwal_MouseMove(object sender, MouseEventArgs e)
+        {
+            dragAndDropAdd.DragMove(e, dgvKuliahBelumTerjadwal, ValueAdd);
+        }
+
+        private void dgvKuliahBelumTerjadwal_MouseDown(object sender, MouseEventArgs e)
+        {
+            var hittest = dragAndDropAdd.DragMouseDownFirst(e, dgvKuliahBelumTerjadwal);
+            if (hittest == null)
+            {
+                return;
+            }
+
+            DataGridViewRow dgvRow = dgvKuliahBelumTerjadwal.Rows[hittest.RowIndex];
+
+            ValueAdd = new
+            {
+                IdKuliah = int.Parse(dgvRow.Cells["IdKuliah"].Value.ToString()),
+                Nik = dgvRow.Cells["Nik"].Value.ToString(),
+                NamaDosen = dgvRow.Cells["Dosen"].Value.ToString(),
+                MataKuliah = dgvRow.Cells["MataKuliah"].Value.ToString(),
+                Kelas = dgvRow.Cells["Kelas"].Value.ToString()
+            };
+
+            dragAndDropAdd.DragMouseDownSecond(e, dgvKuliahTerjadwal, hittest, ValueAdd);
+        }
+
+        private void dgvKuliahBelumTerjadwal_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvKuliahBelumTerjadwal_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvKuliahBelumTerjadwal_DragDrop(object sender, DragEventArgs e)
+        {
+
         }
     }
 }

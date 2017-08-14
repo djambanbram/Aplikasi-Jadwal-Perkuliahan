@@ -69,6 +69,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UIMaster
             this.progressBar1.Location = new System.Drawing.Point(374, 3);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(326, 26);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 0;
             // 
             // FormUIMaster

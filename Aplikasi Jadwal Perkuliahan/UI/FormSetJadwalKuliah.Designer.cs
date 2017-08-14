@@ -54,6 +54,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MataKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nik = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dosen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JenisKuliah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SksT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -142,6 +143,7 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.Kode,
             this.MataKuliah,
             this.Kelas,
+            this.Nik,
             this.Dosen,
             this.JenisKuliah,
             this.SksT,
@@ -160,6 +162,11 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.dgvKuliahBelumTerjadwal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKuliahBelumTerjadwal.Size = new System.Drawing.Size(929, 145);
             this.dgvKuliahBelumTerjadwal.TabIndex = 1;
+            this.dgvKuliahBelumTerjadwal.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvKuliahBelumTerjadwal_DragDrop);
+            this.dgvKuliahBelumTerjadwal.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvKuliahBelumTerjadwal_DragEnter);
+            this.dgvKuliahBelumTerjadwal.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvKuliahBelumTerjadwal_DragOver);
+            this.dgvKuliahBelumTerjadwal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvKuliahBelumTerjadwal_MouseDown);
+            this.dgvKuliahBelumTerjadwal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvKuliahBelumTerjadwal_MouseMove);
             // 
             // IdKuliah
             // 
@@ -198,6 +205,13 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.Kelas.Name = "Kelas";
             this.Kelas.ReadOnly = true;
             this.Kelas.Width = 160;
+            // 
+            // Nik
+            // 
+            this.Nik.HeaderText = "NIK";
+            this.Nik.Name = "Nik";
+            this.Nik.ReadOnly = true;
+            this.Nik.Visible = false;
             // 
             // Dosen
             // 
@@ -349,20 +363,29 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             this.dgvKuliahTerjadwal.Location = new System.Drawing.Point(3, 21);
             this.dgvKuliahTerjadwal.MultiSelect = false;
             this.dgvKuliahTerjadwal.Name = "dgvKuliahTerjadwal";
+            this.dgvKuliahTerjadwal.ReadOnly = true;
             this.dgvKuliahTerjadwal.RowHeadersVisible = false;
+            this.dgvKuliahTerjadwal.RowHeadersWidth = 30;
             dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvKuliahTerjadwal.RowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvKuliahTerjadwal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvKuliahTerjadwal.Size = new System.Drawing.Size(929, 197);
             this.dgvKuliahTerjadwal.TabIndex = 0;
+            this.dgvKuliahTerjadwal.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvKuliahTerjadwal_DragDrop);
+            this.dgvKuliahTerjadwal.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvKuliahTerjadwal_DragEnter);
+            this.dgvKuliahTerjadwal.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvKuliahTerjadwal_DragOver);
+            this.dgvKuliahTerjadwal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvKuliahTerjadwal_MouseDown);
+            this.dgvKuliahTerjadwal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvKuliahTerjadwal_MouseMove);
             // 
             // tree
             // 
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightGray;
             this.tree.DefaultCellStyle = dataGridViewCellStyle9;
             this.tree.DefaultNodeImage = null;
+            this.tree.Frozen = true;
             this.tree.HeaderText = "";
             this.tree.Name = "tree";
+            this.tree.ReadOnly = true;
             this.tree.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.tree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.tree.Width = 40;
@@ -371,8 +394,10 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             // 
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.LightGray;
             this.Hari.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Hari.Frozen = true;
             this.Hari.HeaderText = "Hari";
             this.Hari.Name = "Hari";
+            this.Hari.ReadOnly = true;
             this.Hari.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Hari.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
@@ -380,36 +405,41 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             // 
             this.Jam1.HeaderText = "Jam Ke-1";
             this.Jam1.Name = "Jam1";
+            this.Jam1.ReadOnly = true;
             this.Jam1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Jam1.Width = 350;
+            this.Jam1.Width = 400;
             // 
             // Jam2
             // 
             this.Jam2.HeaderText = "Jam Ke-2";
             this.Jam2.Name = "Jam2";
+            this.Jam2.ReadOnly = true;
             this.Jam2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Jam2.Width = 350;
+            this.Jam2.Width = 400;
             // 
             // Jam3
             // 
             this.Jam3.HeaderText = "jam Ke-3";
             this.Jam3.Name = "Jam3";
+            this.Jam3.ReadOnly = true;
             this.Jam3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Jam3.Width = 350;
+            this.Jam3.Width = 400;
             // 
             // Jam4
             // 
             this.Jam4.HeaderText = "Jam Ke-4";
             this.Jam4.Name = "Jam4";
+            this.Jam4.ReadOnly = true;
             this.Jam4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Jam4.Width = 350;
+            this.Jam4.Width = 400;
             // 
             // Jam5
             // 
             this.Jam5.HeaderText = "Jam Ke-5";
             this.Jam5.Name = "Jam5";
+            this.Jam5.ReadOnly = true;
             this.Jam5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Jam5.Width = 350;
+            this.Jam5.Width = 400;
             // 
             // FormSetJadwalKuliah
             // 
@@ -448,20 +478,21 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtCari;
         private System.Windows.Forms.DataGridView dgvKuliahBelumTerjadwal;
         private AdvancedDataGridView.TreeGridView dgvKuliahTerjadwal;
+        private System.Windows.Forms.Panel panel1;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdKuliah;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
         private System.Windows.Forms.DataGridViewTextBoxColumn MataKuliah;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kelas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nik;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dosen;
         private System.Windows.Forms.DataGridViewTextBoxColumn JenisKuliah;
         private System.Windows.Forms.DataGridViewTextBoxColumn SksT;
         private System.Windows.Forms.DataGridViewTextBoxColumn SksP;
         private System.Windows.Forms.DataGridViewTextBoxColumn SesiEstimasi;
         private System.Windows.Forms.DataGridViewTextBoxColumn SesiTerjadwal;
-        private System.Windows.Forms.Panel panel1;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private AdvancedDataGridView.TreeGridColumn tree;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hari;
         private System.Windows.Forms.DataGridViewTextBoxColumn Jam1;

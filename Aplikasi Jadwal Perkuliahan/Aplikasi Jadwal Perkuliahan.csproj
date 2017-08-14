@@ -76,6 +76,7 @@
     <Compile Include="FormMainAplikasi.Designer.cs">
       <DependentUpon>FormMainAplikasi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lib\DragAndDrop.cs" />
     <Compile Include="Model\Organisasi.cs" />
     <Compile Include="Model\Perkuliahan.cs" />
     <Compile Include="Program.cs" />
