@@ -329,6 +329,11 @@ namespace Aplikasi_Jadwal_Perkuliahan.UI
             var MataKuliah = ValueAdd.MataKuliah;
             var Kelas = ValueAdd.Kelas;
 
+            if(dgvKuliahTerjadwal.Rows[hittest.RowIndex].Cells[hittest.ColumnIndex].Value != null)
+            {
+                MessageBox.Show("Sesi ini sudah terjadwal mata kuliah.\nJika ingin menjadwalkan, silahkan melalui menu penjadwalan tanpa validasi");
+                return;
+            }
             dgvKuliahTerjadwal.Rows[hittest.RowIndex].Cells[hittest.ColumnIndex].Value = string.Format("{0} ({1}) {2}", MataKuliah, NamaDosen, Kelas);
         }
 
